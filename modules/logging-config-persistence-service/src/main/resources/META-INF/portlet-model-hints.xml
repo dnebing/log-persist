@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<hint-collection name="NAME">
+		<hint name="max-length">400</hint>
+	</hint-collection>
+	<model name="com.liferay.logging.persist.model.LoggingConfig">
+		<field name="logConfigId" type="long" />
+		<field name="logger" type="String">
+			<hint-collection name="NAME" />
+		</field>
+		<field name="level" type="String" />
+	</model>
+</model-hints>

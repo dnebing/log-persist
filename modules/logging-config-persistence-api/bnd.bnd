@@ -1,0 +1,9 @@
+Bundle-Name: logging-config-persistence-api
+Bundle-SymbolicName: com.liferay.logging.persist.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.logging.persist.exception,\
+	com.liferay.logging.persist.model,\
+	com.liferay.logging.persist.service,\
+	com.liferay.logging.persist.service.persistence
+-includeresource: META-INF/service.xml=../logging-config-persistence-service/service.xml
