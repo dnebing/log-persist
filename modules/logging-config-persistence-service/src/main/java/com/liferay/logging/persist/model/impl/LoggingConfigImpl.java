@@ -14,8 +14,6 @@
 
 package com.liferay.logging.persist.model.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 /**
  * The extended model implementation for the LoggingConfig service. Represents a row in the &quot;LOGCFG&quot; database table, with each column mapped to a property of this class.
  *
@@ -25,7 +23,6 @@ import aQute.bnd.annotation.ProviderType;
  *
  * @author Brian Wing Shun Chan
  */
-@ProviderType
 public class LoggingConfigImpl extends LoggingConfigBaseImpl {
 	/*
 	 * NOTE FOR DEVELOPERS:
