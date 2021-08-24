@@ -14,18 +14,11 @@
 
 package com.liferay.logging.persist.model;
 
-import aQute.bnd.annotation.ProviderType;
-
-import com.liferay.expando.kernel.model.ExpandoBridge;
-
 import com.liferay.portal.kernel.model.ModelWrapper;
-import com.liferay.portal.kernel.service.ServiceContext;
-
-import java.io.Serializable;
+import com.liferay.portal.kernel.model.wrapper.BaseModelWrapper;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * <p>
@@ -36,21 +29,12 @@ import java.util.Objects;
  * @see LoggingConfig
  * @generated
  */
-@ProviderType
-public class LoggingConfigWrapper implements LoggingConfig,
-	ModelWrapper<LoggingConfig> {
+public class LoggingConfigWrapper
+	extends BaseModelWrapper<LoggingConfig>
+	implements LoggingConfig, ModelWrapper<LoggingConfig> {
+
 	public LoggingConfigWrapper(LoggingConfig loggingConfig) {
-		_loggingConfig = loggingConfig;
-	}
-
-	@Override
-	public Class<?> getModelClass() {
-		return LoggingConfig.class;
-	}
-
-	@Override
-	public String getModelClassName() {
-		return LoggingConfig.class.getName();
+		super(loggingConfig);
 	}
 
 	@Override
@@ -85,225 +69,94 @@ public class LoggingConfigWrapper implements LoggingConfig,
 		}
 	}
 
+	/**
+	 * Returns the level of this logging config.
+	 *
+	 * @return the level of this logging config
+	 */
 	@Override
-	public LoggingConfig toEscapedModel() {
-		return new LoggingConfigWrapper(_loggingConfig.toEscapedModel());
-	}
-
-	@Override
-	public LoggingConfig toUnescapedModel() {
-		return new LoggingConfigWrapper(_loggingConfig.toUnescapedModel());
-	}
-
-	@Override
-	public boolean isCachedModel() {
-		return _loggingConfig.isCachedModel();
-	}
-
-	@Override
-	public boolean isEscapedModel() {
-		return _loggingConfig.isEscapedModel();
-	}
-
-	@Override
-	public boolean isNew() {
-		return _loggingConfig.isNew();
-	}
-
-	@Override
-	public ExpandoBridge getExpandoBridge() {
-		return _loggingConfig.getExpandoBridge();
-	}
-
-	@Override
-	public com.liferay.portal.kernel.model.CacheModel<LoggingConfig> toCacheModel() {
-		return _loggingConfig.toCacheModel();
-	}
-
-	@Override
-	public int compareTo(LoggingConfig loggingConfig) {
-		return _loggingConfig.compareTo(loggingConfig);
-	}
-
-	@Override
-	public int hashCode() {
-		return _loggingConfig.hashCode();
-	}
-
-	@Override
-	public Serializable getPrimaryKeyObj() {
-		return _loggingConfig.getPrimaryKeyObj();
-	}
-
-	@Override
-	public java.lang.Object clone() {
-		return new LoggingConfigWrapper((LoggingConfig)_loggingConfig.clone());
+	public String getLevel() {
+		return model.getLevel();
 	}
 
 	/**
-	* Returns the level of this logging config.
-	*
-	* @return the level of this logging config
-	*/
-	@Override
-	public java.lang.String getLevel() {
-		return _loggingConfig.getLevel();
-	}
-
-	/**
-	* Returns the logger of this logging config.
-	*
-	* @return the logger of this logging config
-	*/
-	@Override
-	public java.lang.String getLogger() {
-		return _loggingConfig.getLogger();
-	}
-
-	@Override
-	public java.lang.String toString() {
-		return _loggingConfig.toString();
-	}
-
-	@Override
-	public java.lang.String toXmlString() {
-		return _loggingConfig.toXmlString();
-	}
-
-	/**
-	* Returns the log config ID of this logging config.
-	*
-	* @return the log config ID of this logging config
-	*/
+	 * Returns the log config ID of this logging config.
+	 *
+	 * @return the log config ID of this logging config
+	 */
 	@Override
 	public long getLogConfigId() {
-		return _loggingConfig.getLogConfigId();
+		return model.getLogConfigId();
 	}
 
 	/**
-	* Returns the primary key of this logging config.
-	*
-	* @return the primary key of this logging config
-	*/
+	 * Returns the logger of this logging config.
+	 *
+	 * @return the logger of this logging config
+	 */
+	@Override
+	public String getLogger() {
+		return model.getLogger();
+	}
+
+	/**
+	 * Returns the primary key of this logging config.
+	 *
+	 * @return the primary key of this logging config
+	 */
 	@Override
 	public long getPrimaryKey() {
-		return _loggingConfig.getPrimaryKey();
+		return model.getPrimaryKey();
 	}
 
 	@Override
 	public void persist() {
-		_loggingConfig.persist();
-	}
-
-	@Override
-	public void setCachedModel(boolean cachedModel) {
-		_loggingConfig.setCachedModel(cachedModel);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge) {
-		_loggingConfig.setExpandoBridgeAttributes(expandoBridge);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(
-		com.liferay.portal.kernel.model.BaseModel<?> baseModel) {
-		_loggingConfig.setExpandoBridgeAttributes(baseModel);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
-		_loggingConfig.setExpandoBridgeAttributes(serviceContext);
+		model.persist();
 	}
 
 	/**
-	* Sets the level of this logging config.
-	*
-	* @param level the level of this logging config
-	*/
+	 * Sets the level of this logging config.
+	 *
+	 * @param level the level of this logging config
+	 */
 	@Override
-	public void setLevel(java.lang.String level) {
-		_loggingConfig.setLevel(level);
+	public void setLevel(String level) {
+		model.setLevel(level);
 	}
 
 	/**
-	* Sets the log config ID of this logging config.
-	*
-	* @param logConfigId the log config ID of this logging config
-	*/
+	 * Sets the log config ID of this logging config.
+	 *
+	 * @param logConfigId the log config ID of this logging config
+	 */
 	@Override
 	public void setLogConfigId(long logConfigId) {
-		_loggingConfig.setLogConfigId(logConfigId);
+		model.setLogConfigId(logConfigId);
 	}
 
 	/**
-	* Sets the logger of this logging config.
-	*
-	* @param logger the logger of this logging config
-	*/
+	 * Sets the logger of this logging config.
+	 *
+	 * @param logger the logger of this logging config
+	 */
 	@Override
-	public void setLogger(java.lang.String logger) {
-		_loggingConfig.setLogger(logger);
-	}
-
-	@Override
-	public void setNew(boolean n) {
-		_loggingConfig.setNew(n);
+	public void setLogger(String logger) {
+		model.setLogger(logger);
 	}
 
 	/**
-	* Sets the primary key of this logging config.
-	*
-	* @param primaryKey the primary key of this logging config
-	*/
+	 * Sets the primary key of this logging config.
+	 *
+	 * @param primaryKey the primary key of this logging config
+	 */
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		_loggingConfig.setPrimaryKey(primaryKey);
+		model.setPrimaryKey(primaryKey);
 	}
 
 	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		_loggingConfig.setPrimaryKeyObj(primaryKeyObj);
+	protected LoggingConfigWrapper wrap(LoggingConfig loggingConfig) {
+		return new LoggingConfigWrapper(loggingConfig);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-
-		if (!(obj instanceof LoggingConfigWrapper)) {
-			return false;
-		}
-
-		LoggingConfigWrapper loggingConfigWrapper = (LoggingConfigWrapper)obj;
-
-		if (Objects.equals(_loggingConfig, loggingConfigWrapper._loggingConfig)) {
-			return true;
-		}
-
-		return false;
-	}
-
-	@Override
-	public LoggingConfig getWrappedModel() {
-		return _loggingConfig;
-	}
-
-	@Override
-	public boolean isEntityCacheEnabled() {
-		return _loggingConfig.isEntityCacheEnabled();
-	}
-
-	@Override
-	public boolean isFinderCacheEnabled() {
-		return _loggingConfig.isFinderCacheEnabled();
-	}
-
-	@Override
-	public void resetOriginalValues() {
-		_loggingConfig.resetOriginalValues();
-	}
-
-	private final LoggingConfig _loggingConfig;
 }

@@ -1,8 +1,7 @@
 dependencies {
-	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib", version: "3.1.0"
-	compileOnly group: "com.liferay", name: "com.liferay.osgi.util", version: "3.0.0"
-	compileOnly group: "com.liferay", name: "com.liferay.portal.spring.extender", version: "2.0.0"
-	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.6.0"
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+//	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+
 	compileOnly project(":modules:logging-config-persistence-api")
 }
 
@@ -11,3 +10,11 @@ buildService {
 }
 
 group = "com.liferay.logging.persist"
+
+tasks.withType(JavaCompile) {
+
+	// Generated classes using Jodd library are unable to be read when compiled against JDK 11
+
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}

@@ -14,8 +14,6 @@
 
 package com.liferay.logging.persist.model;
 
-import aQute.bnd.annotation.ProviderType;
-
 import java.io.Serializable;
 
 import java.util.ArrayList;
@@ -25,10 +23,12 @@ import java.util.List;
  * This class is used by SOAP remote services.
  *
  * @author Brian Wing Shun Chan
+ * @deprecated As of Athanasius (7.3.x), with no direct replacement
  * @generated
  */
-@ProviderType
+@Deprecated
 public class LoggingConfigSoap implements Serializable {
+
 	public static LoggingConfigSoap toSoapModel(LoggingConfig model) {
 		LoggingConfigSoap soapModel = new LoggingConfigSoap();
 
@@ -67,7 +67,8 @@ public class LoggingConfigSoap implements Serializable {
 	}
 
 	public static LoggingConfigSoap[] toSoapModels(List<LoggingConfig> models) {
-		List<LoggingConfigSoap> soapModels = new ArrayList<LoggingConfigSoap>(models.size());
+		List<LoggingConfigSoap> soapModels = new ArrayList<LoggingConfigSoap>(
+			models.size());
 
 		for (LoggingConfig model : models) {
 			soapModels.add(toSoapModel(model));
@@ -114,4 +115,5 @@ public class LoggingConfigSoap implements Serializable {
 	private long _logConfigId;
 	private String _logger;
 	private String _level;
+
 }

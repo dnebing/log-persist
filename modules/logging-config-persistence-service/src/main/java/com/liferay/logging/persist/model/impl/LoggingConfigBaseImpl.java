@@ -14,8 +14,6 @@
 
 package com.liferay.logging.persist.model.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.logging.persist.model.LoggingConfig;
 import com.liferay.logging.persist.service.LoggingConfigLocalServiceUtil;
 
@@ -31,13 +29,13 @@ import com.liferay.logging.persist.service.LoggingConfigLocalServiceUtil;
  * @see LoggingConfig
  * @generated
  */
-@ProviderType
-public abstract class LoggingConfigBaseImpl extends LoggingConfigModelImpl
-	implements LoggingConfig {
+public abstract class LoggingConfigBaseImpl
+	extends LoggingConfigModelImpl implements LoggingConfig {
+
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this class directly. All methods that expect a logging config model instance should use the {@link LoggingConfig} interface instead.
+	 * Never modify or reference this class directly. All methods that expect a logging config model instance should use the <code>LoggingConfig</code> interface instead.
 	 */
 	@Override
 	public void persist() {
@@ -48,4 +46,5 @@ public abstract class LoggingConfigBaseImpl extends LoggingConfigModelImpl
 			LoggingConfigLocalServiceUtil.updateLoggingConfig(this);
 		}
 	}
+
 }

@@ -14,13 +14,14 @@
 
 package com.liferay.logging.persist.service.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.logging.persist.model.LoggingConfig;
 import com.liferay.logging.persist.service.base.LoggingConfigLocalServiceBaseImpl;
+import com.liferay.portal.aop.AopService;
+
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import org.osgi.service.component.annotations.Component;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ import java.util.List;
  * The implementation of the logging config local service.
  *
  * <p>
- * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link com.liferay.logging.persist.service.LoggingConfigLocalService} interface.
+ * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the <code>com.liferay.logging.persist.service.LoggingConfigLocalService</code> interface.
  *
  * <p>
  * This is a local service. Methods of this service will not have security checks based on the propagated JAAS credentials because this service can only be accessed from within the same VM.
@@ -36,9 +37,11 @@ import java.util.List;
  *
  * @author Brian Wing Shun Chan
  * @see LoggingConfigLocalServiceBaseImpl
- * @see com.liferay.logging.persist.service.LoggingConfigLocalServiceUtil
  */
-@ProviderType
+@Component(
+	property = "model.class.name=com.liferay.logging.persist.model.LoggingConfig",
+	service = AopService.class
+)
 public class LoggingConfigLocalServiceImpl
 	extends LoggingConfigLocalServiceBaseImpl {
 

@@ -14,14 +14,10 @@
 
 package com.liferay.logging.persist.model.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.logging.persist.model.LoggingConfig;
-
+import com.liferay.petra.lang.HashUtil;
+import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.model.CacheModel;
-import com.liferay.portal.kernel.util.HashUtil;
-import com.liferay.portal.kernel.util.StringBundler;
-import com.liferay.portal.kernel.util.StringPool;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -32,23 +28,23 @@ import java.io.ObjectOutput;
  * The cache model class for representing LoggingConfig in entity cache.
  *
  * @author Brian Wing Shun Chan
- * @see LoggingConfig
  * @generated
  */
-@ProviderType
-public class LoggingConfigCacheModel implements CacheModel<LoggingConfig>,
-	Externalizable {
+public class LoggingConfigCacheModel
+	implements CacheModel<LoggingConfig>, Externalizable {
+
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
+	public boolean equals(Object object) {
+		if (this == object) {
 			return true;
 		}
 
-		if (!(obj instanceof LoggingConfigCacheModel)) {
+		if (!(object instanceof LoggingConfigCacheModel)) {
 			return false;
 		}
 
-		LoggingConfigCacheModel loggingConfigCacheModel = (LoggingConfigCacheModel)obj;
+		LoggingConfigCacheModel loggingConfigCacheModel =
+			(LoggingConfigCacheModel)object;
 
 		if (logConfigId == loggingConfigCacheModel.logConfigId) {
 			return true;
@@ -84,14 +80,14 @@ public class LoggingConfigCacheModel implements CacheModel<LoggingConfig>,
 		loggingConfigImpl.setLogConfigId(logConfigId);
 
 		if (logger == null) {
-			loggingConfigImpl.setLogger(StringPool.BLANK);
+			loggingConfigImpl.setLogger("");
 		}
 		else {
 			loggingConfigImpl.setLogger(logger);
 		}
 
 		if (level == null) {
-			loggingConfigImpl.setLevel(StringPool.BLANK);
+			loggingConfigImpl.setLevel("");
 		}
 		else {
 			loggingConfigImpl.setLevel(level);
@@ -110,19 +106,18 @@ public class LoggingConfigCacheModel implements CacheModel<LoggingConfig>,
 	}
 
 	@Override
-	public void writeExternal(ObjectOutput objectOutput)
-		throws IOException {
+	public void writeExternal(ObjectOutput objectOutput) throws IOException {
 		objectOutput.writeLong(logConfigId);
 
 		if (logger == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
+			objectOutput.writeUTF("");
 		}
 		else {
 			objectOutput.writeUTF(logger);
 		}
 
 		if (level == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
+			objectOutput.writeUTF("");
 		}
 		else {
 			objectOutput.writeUTF(level);
@@ -132,4 +127,5 @@ public class LoggingConfigCacheModel implements CacheModel<LoggingConfig>,
 	public long logConfigId;
 	public String logger;
 	public String level;
+
 }

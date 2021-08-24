@@ -1,0 +1,3 @@
+Bundle-Name: Liferay Logging Level Persistence Hook
+Bundle-SymbolicName: com.liferay.logging.persist.hook
+Bundle-Version: 1.0.0
