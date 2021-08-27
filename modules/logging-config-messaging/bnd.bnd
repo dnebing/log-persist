@@ -1,0 +1,5 @@
+Bundle-Name: Liferay Logging Level Persistence Messaging
+Bundle-SymbolicName: com.liferay.logging.persist.messaging
+Bundle-Version: 1.0.0
+
+Export-Package: com.liferay.logging.persist.messaging

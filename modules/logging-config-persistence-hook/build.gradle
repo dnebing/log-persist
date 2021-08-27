@@ -3,5 +3,6 @@ dependencies {
 //    compileOnly group: "com.liferay.portal", name: "release.dxp.api"
 
     compileOnly project(":modules:logging-config-persistence-api")
+    compileOnly project(":modules:logging-config-messaging")
     compileOnly group: "log4j", name: "log4j", version: "1.2.17"
 }

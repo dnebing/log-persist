@@ -15,9 +15,19 @@ Because of the way that updates are submitted, when you save a single update cha
 
 Also the log levels will only be updated when the component starts.
 
-So in a cluster configuration, changes to logs in one node will be persisted but other nodes will not process
-the changes until they are restarted.
+~~So in a cluster configuration, changes to logs in one node will be persisted but other nodes will not process
+the changes until they are restarted.~~
 
-Normally this will not be a problem as you don't often change logging levels all that frequently.
+~~Normally this will not be a problem as you don't often change logging levels all that frequently.~~
 
-But it is noted here so you can keep it in mind.
+~~But it is noted here so you can keep it in mind.~~
+
+That used to be the case, but not any more.
+
+In this branch, you have access to the new cluster-wide messaging fix.
+
+In here, when the filter intercepts a log level change, it will persist it, but it will also
+send a message on the LMB about the change. We bridge that to ClusterLink for broadcast, and
+each node will get the message and update the log4j config to match.
+
+Now this repo is enterprise-ready since log level changes are shared across the cluster!

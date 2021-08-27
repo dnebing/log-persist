@@ -8,6 +8,7 @@ import javax.portlet.filter.FilterChain;
 import javax.portlet.filter.FilterConfig;
 import javax.portlet.filter.PortletFilter;
 
+import com.liferay.logging.persist.messaging.LogLevelChangedMessageSender;
 import com.liferay.logging.persist.model.LoggingConfig;
 import com.liferay.logging.persist.service.LoggingConfigLocalService;
 import com.liferay.petra.log4j.Log4JUtil;
@@ -81,8 +82,7 @@ public class LoggingConfigPersister implements ActionFilter {
 		String loggerName = ParamUtil.getString(actionRequest, "loggerName");
 		String priority = ParamUtil.getString(actionRequest, "priority");
 
-		// persist the log data to the database.
-		_loggingConfigLocalService.updateLogger(loggerName, priority);
+		updateLogger(loggerName, priority);
 	}
 
 	/**
@@ -108,10 +108,22 @@ public class LoggingConfigPersister implements ActionFilter {
 				String priority = ParamUtil.getString(
 					actionRequest, name, Level.INFO.toString());
 
-				// update the logger details in the db
-				_loggingConfigLocalService.updateLogger(loggerName, priority);
+				updateLogger(loggerName, priority);
 			}
 		}
+	}
+
+	/**
+	 * updateLogger: Utility method to handle the logger updates.
+	 * @param loggerName Name of the logger that was changed
+	 * @param priority New priority for the logger.
+	 */
+	protected void updateLogger(final String loggerName, final String priority) {
+		// persist the log data to the database.
+		_loggingConfigLocalService.updateLogger(loggerName, priority);
+
+		// notify the cluster that the log level changed...
+		_logLevelChangedMessageSender.sendLogLevelChangedMessage(loggerName, priority);
 	}
 
 	/**
@@ -153,7 +165,13 @@ public class LoggingConfigPersister implements ActionFilter {
 		_loggingConfigLocalService = loggingConfigLocalService;
 	}
 
+	@Reference(unbind = "-")
+	protected void setLogLevelChangedMessageSender(final LogLevelChangedMessageSender sender) {
+		_logLevelChangedMessageSender = sender;
+	}
+
 	private LoggingConfigLocalService _loggingConfigLocalService;
+	private LogLevelChangedMessageSender _logLevelChangedMessageSender;
 
 	private static final Log _log = LogFactoryUtil.getLog(LoggingConfigPersister.class);
 }
